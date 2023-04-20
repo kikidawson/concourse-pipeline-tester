@@ -1,0 +1,26 @@
+---
+resources:
+- name: kd-github-repo
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/kikidawson/tester.git
+    branch: main
+
+jobs:
+- name: job
+  public: true
+  plan:
+  - get: kd-github-repo
+    trigger: true
+  - task: list-files
+    config:
+      inputs:
+        - name: kd-github-repo
+      platform: linux
+      image_resource:
+        type: registry-image
+        source: { repository: busybox }
+      run:
+        path: ls
+        args: ["-la", "./kd-github-repo"]
