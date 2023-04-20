@@ -24,8 +24,18 @@ jobs:
       run:
         path: ls
         args: ["-la", "./kd-github-repo"]
+  - task: pwd
+    config:
+      inputs:
+        - name: kd-github-repo
+      platform: linux
+      image_resource:
+        type: registry-image
+        source: { repository: busybox }
+      run:
+        path: pwd
   - set_pipeline: git-versioning
-    file: ../GitVersion.yml
+    file: kd-github-repo/GitVersion.yml
   # - task: git-versioning
   #   config:
   #     inputs: 
