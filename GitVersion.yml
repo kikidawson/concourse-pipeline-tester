@@ -14,14 +14,15 @@ branches:
   feature:
     regex: features?[/-]
     tag: useBranchName
-    source-branches: ['master', 'feature']
+    source-branches: ['main', 'feature']
     track-merge-target: true
     increment: minor
   bugfix:
     regex: bugfix(es)?[/-]
     tag: useBranchName
-    source-branches: ['master']
+    source-branches: ['main']
     track-merge-target: true
     increment: patch
 ignore:
   sha: []
+ 
